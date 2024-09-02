@@ -1,0 +1,106 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended", "react-app", "plugin:jest/recommended", "plugin:testing-library/react"],
+  "parser": "@babel/eslint-parser",
+  "plugins": ["react", "react-hooks", "testing-library", "jest"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "ignorePatterns": ["**/stimulsoft*.js", "tsconfig.json"],
+  "rules": {
+    "linebreak-style": [0, "error", "unix"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react/prefer-stateless-function": "error",
+
+    // jest
+    "jest/expect-expect": "off",
+    "jest/no-disabled-tests": "off",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "off",
+    "jest/prefer-to-have-length": "error",
+    "jest/valid-expect": "warn",
+    "jest/no-done-callback": "error",
+    "no-alert": "error",
+    "no-debugger": "error",
+    "no-global-assign": ["error", {"exceptions": ["location", "history"]}],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".tsx"]
+      }
+    ],
+    "keyword-spacing": "warn",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "prefer-const": ["error"],
+    "no-restricted-syntax": [
+      "off",
+      {
+        "selector": "CallExpression[callee.name='done']",
+        "message": "Do not use done provided by Jest, it's deprecated."
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "jest/globals": true
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/eslint-recommended"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+
+      // If need to support jsx
+      //     parserOptions: {
+      //       ecmaFeatures: { jsx: true }
+      //     },
+
+      /**
+       * Typescript Rules
+       * https://github.com/bradzacher/eslint-plugin-typescript
+       * Enable your own typescript rules.
+       */
+      "rules": {
+        // Prevent TypeScript-specific constructs from being erroneously flagged as unused
+        // note you must disable the base rule as it can report incorrect errors
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        // Require PascalCased class and interface names
+        "@typescript-eslint/class-name-casing": "error",
+        // Require a specific member delimiter style for interfaces and type literals
+        // Default Semicolon style
+        "@typescript-eslint/member-delimiter-style": "error",
+        // Require a consistent member declaration order
+        "@typescript-eslint/member-ordering": "error",
+        // Require consistent spacing around type annotations
+        "@typescript-eslint/type-annotation-spacing": "error"
+      }
+    },
+    {
+      "files": ["./workspaces/widgetSystem/**/*"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ]
+}
