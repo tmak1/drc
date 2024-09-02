@@ -5,7 +5,7 @@ yarn-error.log*
 npm-debug.log*
 
 # dependencies
-/node_modules
+**/node_modules
 /.pnp
 .pnp.js
 public/favicon.ico
