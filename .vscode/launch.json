@@ -5,6 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Docker: Attach to node",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/backend",
+      "remoteRoot": "/app/backend",
+      "protocol": "inspector"
+    },
+    {
       "name": "Attach to Chrome",
       "port": 9222,
       "type": "pwa-chrome",

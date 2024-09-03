@@ -6,6 +6,10 @@
     "redis": "4.7.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "debug": "nodemon --inspect=0.0.0.0 ./src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

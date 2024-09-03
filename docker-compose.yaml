@@ -1,13 +1,25 @@
 services:
   redis-server:
     image: "redis"
+    restart: always
 
   frontend:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile.dev
+    restart: always
     ports:
       - "3000:3000"
+    volumes:
+      - /app/frontend/node_modules
+      - ./frontend:/app/frontend
+
+  front-end-test:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile.dev
+    restart: always
+    command: ["npm", "run", "test"]
     volumes:
       - /app/frontend/node_modules
       - ./frontend:/app/frontend
@@ -16,8 +28,10 @@ services:
     build:
       context: .
       dockerfile: ./backend/Dockerfile.dev
+    restart: always
     ports:
       - "8080:8080"
+      - "9229:9229"
     volumes:
       - /app/backend/node_modules
       - ./backend:/app/backend
