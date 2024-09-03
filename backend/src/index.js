@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import { createClient } from "redis";
 
+import "dotenv/config";
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -17,7 +19,7 @@ app.get("/", async (req, res) => {
   const countData = await client.get("count");
   const count = parseInt(countData);
   await client.set("count", count + 1);
-  res.json({ count });
+  return res.json({ count });
 });
 
 app.post("/reset", async (req, res) => {

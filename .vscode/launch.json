@@ -9,11 +9,11 @@
       "type": "node",
       "request": "attach",
       "restart": true,
-      "port": 9229,
+      "port": 9229, // make sure to map this port when running the container
       "address": "localhost",
-      "localRoot": "${workspaceFolder}/backend",
-      "remoteRoot": "/app/backend",
-      "protocol": "inspector"
+      "localRoot": "${workspaceFolder}/backend", // needs to be the folder to debug in host
+      "remoteRoot": "/app/backend", // needs to be the folder to debug in the container
+      "protocol": "inspector" // npm/nodemon inspect
     },
     {
       "name": "Attach to Chrome",
