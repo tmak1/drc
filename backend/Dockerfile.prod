@@ -2,19 +2,10 @@ FROM node:16.20.2-alpine AS build
 
 WORKDIR /usr/local/app/backend
 
-COPY package.json .
+COPY ./backend/package.json .
 
-RUN npm run install
+RUN npm install
 
-COPY . .
-
-EXPOSE 8080
-
-
-FROM node:16.20.2-alpine AS prod
-
-WORKDIR /usr/local/app/backend
-
-COPY --from=build /usr/local/app/backend /usr/local/app/backend
+COPY ./backend .
 
 CMD [ "npm", "start" ]
