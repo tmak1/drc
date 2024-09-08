@@ -1,0 +1,11 @@
+FROM node:16.20.2-alpine AS build
+
+WORKDIR /usr/local/app/backend
+
+COPY ./backend/package.json .
+
+RUN npm install
+
+COPY ./backend .
+
+CMD [ "npm", "start" ]

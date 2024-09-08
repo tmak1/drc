@@ -1,0 +1,56 @@
+# package managers
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# dependencies
+**/node_modules
+/.pnp
+.pnp.js
+public/favicon.ico
+
+# yalc
+/.yalc
+yalc.lock
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+
+# editor files
+.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/launch.json
+.idea
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.local.backup
+.env.development.local
+.env.test.local
+.env.production.local
+.env.foo.local
+.eslintcache
+
+#for chrome logs
+debug.log*
+
+# conflict resolution from diff tool (eg - kdiff3)
+*.orig
+*.7z
+
+# intl generated file
+# remember to git rm -f lang/en-AU.json if your local repo is still tracking updates to en-AU.json
+/lang
+/lang-compiled
+
+#ignore tsconfig, remove this when there is a change needed or use extension
+tsconfig.json
+routes.json

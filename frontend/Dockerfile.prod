@@ -1,0 +1,17 @@
+FROM node:16.20.2-alpine AS builder
+
+WORKDIR /usr/local/app/frontend
+
+COPY ./frontend/package.json .
+
+RUN npm install
+
+COPY ./frontend .
+
+RUN npm run test -- --watchAll=false
+
+RUN npm run build
+
+FROM nginx
+
+COPY --from=builder /usr/local/app/frontend/build /usr/share/nginx/html

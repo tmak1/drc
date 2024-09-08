@@ -1,0 +1,32 @@
+services:
+  redis-server:
+    image: "redis"
+    restart: always
+    networks:
+      - drc-bridge-net
+
+  frontend:
+    build:
+      context: .
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - drc-bridge-net
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+    container_name: backend
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - drc-bridge-net
+
+networks:
+  drc-bridge-net:
+    driver: bridge

@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build:
+      dockerfile: ./frontend/Dockerfile.dev
+    volumes:
+      - /usr/local/app/frontend/node_modules
+      - ./frontend:/usr/local/app/frontend
+
+  backend:
+    build:
+      dockerfile: ./backend/Dockerfile.dev
+    ports:
+      - "9229:9229"
+    volumes:
+      - /usr/local/app/backend/node_modules
+      - ./backend:/usr/local/app/backend
